@@ -22,4 +22,12 @@ app.controller('PostsController', function($scope, FirebaseService) {
 			$scope.getPosts();
 		});
 	};
+
+	$scope.submitComment = function(id, comment, currentComments) {
+		FirebaseService.addComment(id, comment, (currentComments || [])).then(function() {
+			$scope.getPosts();
+		});
+	};
+
+
 });

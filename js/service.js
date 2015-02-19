@@ -16,6 +16,7 @@ app.service('FirebaseService', function($http, $q) {
 		return deferred.promise;
 	};
 
+
 	this.addPost = function(post) {
 		post.timestamp = Date.now();
 		post.comments = [];
@@ -29,6 +30,7 @@ app.service('FirebaseService', function($http, $q) {
 		});
 	};
 
+
 	function guid() {
 		var s4 = function() {
       return Math.floor((1 + Math.random()) * 0x10000)
@@ -38,6 +40,7 @@ app.service('FirebaseService', function($http, $q) {
     return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
       s4() + '-' + s4() + s4() + s4();
 	}
+
 
 	this.vote = function(postId, currentKarma, direction) {
 		var deferred = $q.defer();
@@ -61,7 +64,35 @@ app.service('FirebaseService', function($http, $q) {
 		return deferred.promise;
 	};
 
+
+	this.addComment = function(postId, newComment, commentsArray) {
+		commentsArray.push(newComment);
+
+		var deferred = $q.defer();
+
+		$http({
+			method: 'PATCH',
+			url: 'https://devmtn.firebaseio.com/posts/' + postId + '.json',
+			data: {comments: commentsArray}
+		}).then(function(data) {
+			deferred.resolve(data);
+		}, function(reason) {
+			deferred.reject(reason);
+		});
+
+		return deferred.promise;
+	};
+
+
 });
+
+
+
+
+
+
+
+
 
 
 

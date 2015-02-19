@@ -27,7 +27,12 @@
               <span ng-click="vote(post.id, post.karma, 'up')" class="glyphicon glyphicon-thumbs-up"></span>
               <span ng-click="vote(post.id, post.karma, 'down')" class="glyphicon glyphicon-thumbs-down"></span>
               <hr>
-              <form ng-submit="submitComment(post.id, post.commentForm)">
+              <h3>Comments</h3>
+              <div ng-repeat="comment in post.comments">
+                {{comment}}
+                <hr>
+              </div>
+              <form ng-submit="submitComment(post.id, post.commentForm, post.comments)">
                 <div class="form-group">
                   <textarea class="form-control" placeholder="comment" ng-model="post.commentForm"></textarea>
                 </div>
@@ -35,10 +40,6 @@
                   <button class="btn btn-danger btn-block">Submit</button>
                 </div>
               </form>
-              <div ng-repeat="item in post.comments">
-                {{item.comments}}
-                <hr>
-              </div>
             </div>
           </div>
           <div class="panel-footer">
