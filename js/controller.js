@@ -17,4 +17,9 @@ app.controller('PostsController', function($scope, FirebaseService) {
 		});
 	};
 
+	$scope.vote = function(id, currentKarma, direction) {
+		FirebaseService.vote(id, currentKarma, direction).then(function() {
+			$scope.getPosts();
+		});
+	};
 });

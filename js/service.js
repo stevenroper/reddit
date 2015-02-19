@@ -39,4 +39,31 @@ app.service('FirebaseService', function($http, $q) {
       s4() + '-' + s4() + s4() + s4();
 	}
 
+	this.vote = function(postId, currentKarma, direction) {
+		var deferred = $q.defer();
+
+		if(direction === 'up') {
+			currentKarma++;
+		} else if(direction === 'down') {
+			currentKarma--;
+		}
+
+		$http({
+			method: 'PATCH',
+			url: 'https://devmtn.firebaseio.com/posts/' + postId + '.json',
+			data: {karma: currentKarma}
+		}).then(function(data) {
+			deferred.resolve(data);
+		}, function(reason) {
+			deferred.reject(reason);
+		});
+
+		return deferred.promise;
+	};
+
 });
+
+
+
+
+
