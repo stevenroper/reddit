@@ -6,7 +6,7 @@ app.service('FirebaseService', function($http, $q) {
 		var deferred = $q.defer();
 		$http({
 			method: 'GET',
-			url: 'https://devmtn.firebaseio.com/posts.json'
+			url: 'https://stevenreddit.firebaseio.com/posts.json'
 		}).then(function onSuccess(data) {
 			deferred.resolve(data.data);
 		}, function onFailure(reason) {
@@ -25,7 +25,7 @@ app.service('FirebaseService', function($http, $q) {
 
 		return $http({
 			method: 'PUT',
-			url: 'https://devmtn.firebaseio.com/posts/' + post.id + '.json',
+			url: 'https://stevenreddit.firebaseio.com/posts/' + post.id + '.json',
 			data: post
 		});
 	};
@@ -53,7 +53,7 @@ app.service('FirebaseService', function($http, $q) {
 
 		$http({
 			method: 'PATCH',
-			url: 'https://devmtn.firebaseio.com/posts/' + postId + '.json',
+			url: 'https://stevenreddit.firebaseio.com/posts/' + postId + '.json',
 			data: {karma: currentKarma}
 		}).then(function(data) {
 			deferred.resolve(data);
@@ -72,7 +72,7 @@ app.service('FirebaseService', function($http, $q) {
 
 		$http({
 			method: 'PATCH',
-			url: 'https://devmtn.firebaseio.com/posts/' + postId + '.json',
+			url: 'https://stevenreddit.firebaseio.com/posts/' + postId + '.json',
 			data: {comments: commentsArray}
 		}).then(function(data) {
 			deferred.resolve(data);

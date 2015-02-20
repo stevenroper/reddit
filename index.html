@@ -17,7 +17,7 @@
             Recent Posts!
           </div>
           <div class="panel-body">
-            <div ng-repeat="post in posts">
+            <div ng-repeat="post in posts | orderBy:'timestamp'">
 
               <h1>{{post.title}}</h1>
               <i>{{post.timestamp | date : format : timezone}}</i>
