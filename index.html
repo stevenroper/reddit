@@ -24,8 +24,8 @@
               <p>{{post.body}}</p>
               <i>{{post.author}}</i>
               <p>Karma: {{post.karma}}</p>
-              <span ng-click="vote(post.id, post.karma, 'up')" class="glyphicon glyphicon-thumbs-up"></span>
-              <span ng-click="vote(post.id, post.karma, 'down')" class="glyphicon glyphicon-thumbs-down"></span>
+              <span ng-click="vote(post.id, 'up')" class="glyphicon glyphicon-thumbs-up"></span>
+              <span ng-click="vote(post.id, 'down')" class="glyphicon glyphicon-thumbs-down"></span>
               <hr>
               <h3>Comments</h3>
               <div ng-repeat="comment in post.comments">

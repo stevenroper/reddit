@@ -17,8 +17,8 @@ app.controller('PostsController', function($scope, FirebaseService, $interval) {
 		});
 	};
 
-	$scope.vote = function(id, currentKarma, direction) {
-		FirebaseService.vote(id, currentKarma, direction).then(function() {
+	$scope.vote = function(id, direction) {
+		FirebaseService.vote(id, $scope.posts[id].karma, direction).then(function() {
 			$scope.getPosts();
 		});
 	};
