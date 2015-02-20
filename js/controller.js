@@ -1,6 +1,6 @@
 var app = angular.module('reddit');
 
-app.controller('PostsController', function($scope, FirebaseService) {
+app.controller('PostsController', function($scope, FirebaseService, $interval) {
 
 	$scope.getPosts = function() {
 		FirebaseService.getData().then(function(posts) {
@@ -29,5 +29,6 @@ app.controller('PostsController', function($scope, FirebaseService) {
 		});
 	};
 
+	$interval($scope.getPosts(), 5000);
 
 });
